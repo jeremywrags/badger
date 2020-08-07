@@ -1,0 +1,43 @@
+
+<!-- ======= Header ======= -->
+<header id="header">
+  <div class="logo float-left" style="background-color: #ffffff; padding: 5px; position:relative; top: -10px;">
+    <!-- <h1 class="text-light"><a href="index.html"><span>Mamba</span></a></h1> -->
+    <!-- Uncomment below if you prefer to use an image logo -->
+    <a href="/index2"><img src="/images/logos/Badger-Equipment-primary-logo-color.png" alt="" class="img-fluid"></a>
+  </div>
+  <div class="container">      
+    <nav class="nav-menu float-left d-none d-lg-block">
+      <ul>
+        <li class="active"><a href="/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        <li><a id="LinkAboutUs" href="#about">About Us</a></li>          
+        <li class="drop-down"><a id="LinkProducts" href="#products">Products</a>
+          <ul id="productMenu">
+          <% categories.forEach(function(category) { %>            
+            <li id="menuItem_<%= category.name.replace(/\s/g, '') %>" data-filter=".filter-<%= category.name.replace(/\s/g, '') %>"><a id="Link<%= category.name.replace(/\s/g, '') %>" href="#products"><%= category.name %> </a>
+          <% }); %>  
+          </ul>
+
+        <!--<ul>
+
+            <li class="drop-down"><a id="LinkProducts" href="#products">Parts</a>
+              <ul>
+                <li><a href="/#products">Drive Train</a></li>
+                <li><a href="/#products">Engine Parts</a></li>
+                <li><a href="/#products">Filters</a></li>
+                <li><a href="/#products">Hydraulics</a></li>
+                <li><a href="/#products">Seals</a></li>              
+              </ul>
+            </li>
+            <li><a id="LinkProducts" href="#products">Heavy Equipment</a>
+          </ul>
+        -->
+        </li>
+        <li><a id="LinkServices" href="#services">Services</a></li>          
+        <li><a id="LinkTeam" href="#team">Our Team</a></li>        
+        <li><a id="Contact" href="#contact">Contact Us</a></li>
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  </div>
+</header><!-- End Header -->

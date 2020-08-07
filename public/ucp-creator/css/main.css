@@ -1,0 +1,70 @@
+body {
+    font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+    font-size: 16px;
+    width: auto;
+}
+
+input[type=submit] {
+    background:#ccc; 
+    border:0 none;
+    cursor:pointer;
+    border-radius: 5px;
+    width: 100%; 
+}
+
+form {
+    float: left;
+    width: 550px;
+    padding: 0px 20px;
+}
+
+.input-number {
+    width: 75px;
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+}
+
+.ucp-data-row input, .ucp-data-row select {
+    width: 100%;
+}
+
+.ucp-subtitle {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#ucp-form {
+    border-right: 3px solid black;
+}
+
+#ucp-data-header {
+    display: flex;
+    align-items: center;
+}
+
+#ucp-title {
+    margin-bottom: 20px;
+}
+
+.ucp-data-add {
+    color: white;
+    background: black;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 8px;
+    width: auto;
+}
+
+.ucp-data-add:hover {
+    background: gray;
+    cursor: pointer;
+}
+
+#ucp-form-submit, #ucp-tag-submit {
+    margin-top: 20px;
+}
