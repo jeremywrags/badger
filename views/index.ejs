@@ -251,7 +251,7 @@
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
               <% categories.forEach(function(category) { %>                            
-                    <li caption="Interest In <%= category.name %>" id="Link_Filter_<%= category.name.replace(/\s/g, '') %>" data-filter=".filter-<%= category.name.replace(/\s/g, '') %>"><%= category.name %></li>
+                    <li data-filter=".filter-<%= category.name.replace(/\s/g, '') %>"><a caption="Interest In <%= category.name %>" id="Link_Filter_<%= category.name.replace(/\s/g, '') %>"><%= category.name %></a></li>
               <% }); %>  
               <!--
               <li id="InterestDriveTrain" data-filter=".filter-drivetrain">Drive Train</li>
