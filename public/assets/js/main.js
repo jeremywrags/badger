@@ -7,7 +7,17 @@
 !(function($) {
   "use strict";
 
-  // Toggle .header-scrolled class to #header when page is scrolled
+  const actionMappingClicks = {};
+  
+  
+  //Get all links and push them into the action mapping object
+  var linksToMap = Array.from(document.querySelectorAll('[id^="Link"]')).concat(Array.from(document.querySelectorAll('[id^="InterestIn"]')));  
+  for(var i = 0; i < linksToMap.length; i++){
+      actionMappingClicks[linksToMap[i].getAttribute("caption")] = "#" + linksToMap[i].id;
+  }
+  console.log(JSON.stringify(actionMappingClicks));
+
+    // Toggle .header-scrolled class to #header when page is scrolled
   $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {
       $('#header').addClass('header-scrolled');

@@ -3,7 +3,7 @@
 
 <head>
   <% include partials/head %> 
-  
+
 </head>
 
 <body>
@@ -251,7 +251,7 @@
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
               <% categories.forEach(function(category) { %>                            
-                    <li id="InterestIn<%= category.name.replace(/\s/g, '') %>" data-filter=".filter-<%= category.name.replace(/\s/g, '') %>"><%= category.name %></li>
+                    <li caption="<%= category.name %>" id="InterestIn<%= category.name.replace(/\s/g, '') %>" data-filter=".filter-<%= category.name.replace(/\s/g, '') %>"><%= category.name %></li>
               <% }); %>  
               <!--
               <li id="InterestDriveTrain" data-filter=".filter-drivetrain">Drive Train</li>
@@ -299,32 +299,32 @@
     <div class="row">
       <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
         <div class="icon"><i class="icofont-wall-clock"></i></div>
-        <h4 class="title"><a id="LinkMaintenance" href="#services">Maintenacne Schedules</a></h4>
+        <h4 class="title"><a caption="Interest in Maintenance" id="LinkMaintenance" href="#services">Maintenacne Schedules</a></h4>
         <p class="description">See the recommended maintenance schedule for every piece of Badger Equipment</p>
       </div>
       <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
         <div class="icon"><i class="icofont-safety"></i></div>
-        <h4 class="title"><a id="LinkSaftey" href="#services">Saftey</a></h4>
+        <h4 class="title"><a caption="Interest in Saftey" id="LinkSaftey" href="#services">Saftey</a></h4>
         <p class="description">Safety is our #1 priority. See all safety tips by line and product.</p>
       </div>
       <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
         <div class="icon"><i class="icofont-school-bag"></i></div>
-        <h4 class="title"><a id="LinkTraining" href="#services">Training</a></h4>
+        <h4 class="title"><a caption="Interest in Training" id="LinkTraining" href="#services">Training</a></h4>
         <p class="description">We offer training on all our equipment, online and offline. See availability here.</p>
       </div>
       <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
         <div class="icon"><i class="icofont-broken"></i></div>
-        <h4 class="title"><a id="LinkWarranty" href="#services">Warranty</a></h4>
+        <h4 class="title"><a caption="Interest in Warranties" id="LinkWarranty" href="#services">Warranty</a></h4>
         <p class="description">We offer lifetime limited warranty on all parts and services. Details available.</p>
       </div>
       <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
         <div class="icon"><i class="icofont-repair"></i></div>
-        <h4 class="title"><a id="LinkServiceRepair" href="#services">Service & Repair</a></h4>
+        <h4 class="title"><a caption="Interest in Service & Repair" id="LinkServiceRepair" href="#services">Service & Repair</a></h4>
         <p class="description">We made it, we’ll fix it.  Or contact one of our authorized dealers. Either way, we’ll show you how.</p>
       </div>
       <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
         <div class="icon"><i class="icofont-read-book"></i></div>
-        <h4 class="title"><a id="LinkManuals" href="#services">Operator Manuals</a></h4>
+        <h4 class="title"><a caption="Interest in Manuals" id="LinkManuals" href="#services">Operator Manuals</a></h4>
         <p class="description">Read the manual. Like, seriously. Read it. Know your machine and do the job right.</p>
       </div>
     </div>
