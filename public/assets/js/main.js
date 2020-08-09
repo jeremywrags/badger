@@ -14,14 +14,14 @@
   //var linksToMap = Array.from(document.querySelectorAll('[id^="Link"]')).concat(Array.from(document.querySelectorAll('[id^="InterestIn"]')));  
   var linksToMap = document.querySelectorAll('[caption]');
   for(var i = 0; i < linksToMap.length; i++){
-      if(linksToMap[i].getAttribute("caption"))
-        actionMappingClicks[linksToMap[i].getAttribute("caption")] = "#" + linksToMap[i].id;
+      if(linksToMap[i].getAttribute("caption")){
+        actionMappingClicks[linksToMap[i].getAttribute("caption")] = "#" + linksToMap[i].id;          
+      }
       else
         console.log(linksToMap[i].id + " has no caption value")
       
         console.log(linksToMap[i].id + " : " + linksToMap[i].getAttribute("caption")) 
-  }  
-
+  }    
     // Toggle .header-scrolled class to #header when page is scrolled
   $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {
@@ -41,6 +41,7 @@
     zIndex: '50'
   });
 
+  
   // Smooth scroll for the navigation menu and links with .scrollto classes
   var scrolltoOffset = $('#header').outerHeight() - 2;
   $(document).on('click', '.nav-menu a, .mobile-nav a, .scrollto', function(e) {
