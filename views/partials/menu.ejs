@@ -14,7 +14,7 @@
         <li class="drop-down"><a caption="Interest in Products" id="LinkProducts" href="#products">Products</a>
           <ul id="productMenu">
           <% categories.forEach(function(category) { %>            
-            <li id="menuItem_<%= category.name.replace(/\s/g, '') %>" data-filter=".filter-<%= category.name.replace(/\s/g, '') %>"><a caption="<%= category.name %>" id="Link<%= category.name.replace(/\s/g, '') %>" href="#products"><%= category.name %> </a>
+            <li id="menuItem_<%= category.name.replace(/\s/g, '') %>" data-filter=".filter-<%= category.name.replace(/\s/g, '') %>"><a caption="<%= category.name %>" id="Link_menu_<%= category.name.replace(/\s/g, '') %>" href="#products"><%= category.name %> </a>
           <% }); %>  
           </ul>
 
