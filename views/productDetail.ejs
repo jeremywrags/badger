@@ -59,6 +59,9 @@
                   <div class="col">
                     <h2><%= product.name %></h2>                    
                   </div>
+                  <div class="col">
+                    <h2>$<%= product.price %></h2>                    
+                  </div>
                   <div class="col" style="text-align: left;">
                     <button type="button" style="margin-bottom:10px;" class="btn btn-dark">Add to cart</button>
                     <input type="text" class="form-control" style="width:40px;" id="qty" placeholder="1">
@@ -72,7 +75,7 @@
               <div class="icon"><i class="bx bx-fingerprint"></i></div>
               <h4 class="title"><a href="">Product Desciprion</a></h4>
               <p class="description">
-                <%= product.description %>
+                <%= product.longdescription %>
               </p>
             </div>
 

@@ -17,7 +17,7 @@ router.get('/retrieve',   (req, res) => {
 router.get('/retrievecc',   (req, res) => {         
     
     db.query(`
-    select * from ( 
+    select distinct * from ( 
         select product.name as name, product.id as ID, pli.ccrz__price__c as Price, pl.name as PriceListName,  product.ccrz__longdesc__c as LongDescription, product.ccrz__shortdescrt__c as ShortDescription, product.image_uri__c as img,  cat.name as CategoryName, parentCat.name as ParentCategory
         from salesforce.ccrz__E_ProductCategory__c pcat
         inner join salesforce.ccrz__E_Product__c product on product.sfid = pcat.ccrz__product__c
@@ -26,7 +26,7 @@ router.get('/retrievecc',   (req, res) => {
         inner join salesforce.ccrz__E_PriceListItem__c pli on pli.ccrz__product__c = product.sfid
         inner join salesforce.ccrz__E_PriceList__c pl on pli.ccrz__pricelist__c = pl.sfid
         ) as res
-       where categoryname != 'All Products' and pricelistname = 'Badger Parts Retail Price';
+       where categoryname != 'All Products' and name = 'Cyclinder Block';
     `)
     .then(products =>{
         res.json(products.rows);

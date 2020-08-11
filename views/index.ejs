@@ -273,7 +273,8 @@
               
                 <div class="portfolio-info">
                   <h4><%= product.name %></h4>
-                  <p><%= product.description %></p>
+                  <p><%= product.longdescription %></p>
+                  <p>$<%= product.price %></p>
                   <div class="portfolio-links">
                     <a href="<%=product.img%>" data-gall="portfolioGallery" class="venobox" title="Axle"><i class="icofont-eye"></i></a>
                     <a id="Link_Product_<%= product.name.replace(/[\W_]+/g, '') %>" caption="Interest in <%= product.name %>" href="/productDetail/<%= product.id %>" title="More Details"><i class="icofont-external-link"></i></a>
