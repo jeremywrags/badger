@@ -197,7 +197,7 @@
       $("#portfolio-flters li").removeClass('filter-active');
       $(this).addClass('filter-active');
 
-      Evergage.sendEvent({action});
+      
       portfolioIsotope.isotope({
         filter: $(this).data('filter')
       });
