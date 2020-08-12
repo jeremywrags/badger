@@ -1,9 +1,6 @@
-
 <!-- ======= Header ======= -->
 <header id="header">
-  <div class="logo float-left" style="background-color: #ffffff; padding: 5px; position:relative; top: -10px;">
-    <!-- <h1 class="text-light"><a href="index.html"><span>Mamba</span></a></h1> -->
-    <!-- Uncomment below if you prefer to use an image logo -->
+  <div class="logo float-left" style="background-color: #ffffff; padding: 5px; position:relative; top: -10px;">    
     <a href="/"><img src="/images/logos/Badger-Equipment-primary-logo-color.png" alt="" class="img-fluid"></a>
   </div>
   <div class="container">      
@@ -14,7 +11,9 @@
         <li class="drop-down"><a caption="Interest in Products" id="LinkProducts" href="#products">Products</a>
           <ul id="productMenu">
           <% categories.forEach(function(category) { %>            
-            <li id="menuItem_<%= category.name.replace(/\s/g, '') %>" data-filter=".filter-<%= category.name.replace(/\s/g, '') %>"><a caption="Interest In <%= category.name %>" id="Link_Menu_<%= category.name.replace(/\s/g, '') %>" href="<%= pageURLref %>#products"><%= category.name %> </a>
+            <li id="menuItem_<%= category.name.replace(/\s/g, '') %>" data-filter=".filter-<%= category.name.replace(/\s/g, '') %>">
+              <a caption="Interest In <%= category.name %>" id="Link_Menu_<%= category.name.replace(/\s/g, '') %>" href="<%= pageURLref %>#products"><%= category.name %> </a>
+            </li>  
           <% }); %>  
           </ul>
         </li>
@@ -23,6 +22,5 @@
         <li><a caption="Interest In Contact Us" id="Contact" href="#contact">Contact Us</a></li>
       </ul>
     </nav><!-- .nav-menu -->
-
   </div>
 </header><!-- End Header -->

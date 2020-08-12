@@ -7,8 +7,7 @@ var badger = require('../models/badgerModel')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  
-//db.query("select name, Description, Family, ID, substring(product2.product_image__c,11,position('alt' in product2.product_image__c)-13) as img from salesforce.product2 where Family is not null and COALESCE(product2.product_image__c,'') NOT ILIKE '%noImage%' and COALESCE(product2.product_image__c,'') NOT ILIKE '%ImageServer%';")
+
 db.query(`
     select * from ( 
         select 
@@ -31,8 +30,7 @@ db.query(`
        where categoryname != 'All Products' and pricelistname = 'Badger Parts Retail Price';
     `)
 .then(products =>{
-      var result = [];
-      //return db.query("select distinct Family as name from salesforce.product2 where Family is not null and COALESCE(product2.product_image__c,'') NOT ILIKE '%noImage%' and COALESCE(product2.product_image__c,'') NOT ILIKE '%ImageServer%';")
+      var result = [];      
       return db.query(`
       select distinct CategoryName as name from ( 
           select product.name as name, product.id as ID, pli.ccrz__price__c as Price, pl.name as PriceListName,  product.ccrz__longdesc__c as LongDescription, product.ccrz__shortdescrt__c as ShortDescription, product.image_uri__c as img,  cat.name as CategoryName, parentCat.name as ParentCategory
@@ -65,16 +63,6 @@ router.get('/dft', function(req, res, next) {
 
 router.get('/productDetail/:id', function(req, res){
   
-  /*db.query("select name, Description, Family, ID, substring(product2.product_image__c,11,position('alt' in product2.product_image__c)-13) as img from salesforce.product2 where id=" + req.params.id + ";")
-.then(products =>{
-      var result = [];
-      return db.query("select distinct Family as name from salesforce.product2 where Family is not null and COALESCE(product2.product_image__c,'') NOT ILIKE '%noImage%' and COALESCE(product2.product_image__c,'') NOT ILIKE '%ImageServer%';")
-      .then( categories => {
-        return [products.rows, categories.rows];
-      });
-    })
-    .then(function(result){
-      */
      db.query(`
     select * from ( 
         select 
@@ -97,8 +85,7 @@ router.get('/productDetail/:id', function(req, res){
        where categoryname != 'All Products' and pricelistname = 'Badger Parts Retail Price' and id='${req.params.id}';
     `)
 .then(products =>{
-      var result = [];
-      //return db.query("select distinct Family as name from salesforce.product2 where Family is not null and COALESCE(product2.product_image__c,'') NOT ILIKE '%noImage%' and COALESCE(product2.product_image__c,'') NOT ILIKE '%ImageServer%';")
+      var result = [];      
       return db.query(`
       select distinct CategoryName as name from ( 
           select product.name as name, product.id as ID, pli.ccrz__price__c as Price, pl.name as PriceListName,  product.ccrz__longdesc__c as LongDescription, product.ccrz__shortdescrt__c as ShortDescription, product.image_uri__c as img,  cat.name as CategoryName, parentCat.name as ParentCategory
@@ -121,13 +108,12 @@ router.get('/productDetail/:id', function(req, res){
 })
 
 router.get('/products', function(req, res){
-    pool.query('select name from salesforce.product2;', (error, results) => {
+  pool.query('select name from salesforce.product2;', (error, results) => {
     if (error) {
-    throw error
+      throw error
     }
     response.status(200).json(results.rows)
-})
-
+  })
 })
 
 module.exports = router;

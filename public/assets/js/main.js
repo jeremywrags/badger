@@ -17,9 +17,9 @@
       if(linksToMap[i].getAttribute("caption")){
         actionMappingClicks[linksToMap[i].getAttribute("caption")] = "#" + linksToMap[i].id;          
       }
-      else
+      else{
         console.log(linksToMap[i].id + " has no caption value")
-      
+      }
         console.log(linksToMap[i].id + " : " + linksToMap[i].getAttribute("caption")) 
   }    
     // Toggle .header-scrolled class to #header when page is scrolled
@@ -101,7 +101,7 @@
       $('body').toggleClass('mobile-nav-active');
       $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
       $('.mobile-nav-overly').toggle();
-    });
+    });x1
 
     $(document).on('click', '.mobile-nav .drop-down > a', function(e) {
       e.preventDefault();
@@ -208,8 +208,8 @@
       var link = this.id.split("_")[1];
       
       $("#portfolio-flters li").removeClass('filter-active');
-      $("#Link_Filter_" + link).parent().addClass('filter-active');
-
+      $("#Link_Filter_" + link).parent().addClass('filter-active');      
+      console.log("#Link_Filter_" + link);
       portfolioIsotope.isotope({
         filter: $(this).data('filter')
       });
