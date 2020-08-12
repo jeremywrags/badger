@@ -194,10 +194,9 @@
     });
 
     $('#portfolio-flters li').on('click', function() {
-      $("#portfolio-flters li").removeClass('filter-active');
+      $("#portfolio-flters li").removeClass('filter-active');      
       $(this).addClass('filter-active');
-
-      
+            
       portfolioIsotope.isotope({
         filter: $(this).data('filter')
       });
@@ -209,7 +208,7 @@
       var link = this.id.split("_")[1];
       
       $("#portfolio-flters li").removeClass('filter-active');
-      $("#InterestIn" + link).addClass('filter-active');
+      $("#Link_Filter_" + link).parent().addClass('filter-active');
 
       portfolioIsotope.isotope({
         filter: $(this).data('filter')
