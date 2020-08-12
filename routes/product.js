@@ -1,6 +1,7 @@
 var express = require('express')
 var router = express.Router()
 var db = require('../models/postgres')
+var badger = require('../models/badgerModel')
 
 router.get('/retrieve',   (req, res) => {         
     
@@ -51,6 +52,17 @@ router.get('/retrievecccategories',   (req, res) => {
     `)
     .then(products =>{
         res.json(products.rows);
+    })
+    .catch(err => {
+        res.json(err);
+    })  
+}); 
+
+router.get('/categories',   (req, res) => {         
+    
+    badger.getCategories()
+    .then(cats =>{
+        res.json(cats.rows);
     })
     .catch(err => {
         res.json(err);

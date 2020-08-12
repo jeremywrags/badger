@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 var db = require('../models/postgres')
+var badger = require('../models/badgerModel')
 
 
 /* GET home page. */
@@ -126,6 +127,7 @@ router.get('/products', function(req, res){
     }
     response.status(200).json(results.rows)
 })
+
 })
 
 module.exports = router;
