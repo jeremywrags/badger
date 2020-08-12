@@ -30,7 +30,7 @@ router.get('/retrievecc',   (req, res) => {
        where categoryname != 'All Products' and name = 'Cyclinder Block';
     `)
     .then(products =>{
-        res.json(products.rows);
+        res.render('product', { products: rproducts});    
     })
     .catch(err => {
         res.json(err);

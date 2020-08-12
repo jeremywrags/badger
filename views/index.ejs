@@ -3,8 +3,13 @@
 
 <head>
   <% include partials/head %> 
+
 </head>
+
 <body>
+  
+  
+  
   <!-- ======= Top Bar ======= -->
   <section id="topbar" class="d-none d-lg-block">    
     <div class="container clearfix">
@@ -246,10 +251,15 @@
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
               <% categories.forEach(function(category) { %>                            
-                    <li data-filter=".filter-<%= category.name.replace(/\s/g, '') %>">
-                      <a caption="Interest In <%= category.name %>" id="Link_Filter_<%= category.name.replace(/\s/g, '') %>"><%= category.name %></a>
-                    </li>
-              <% }); %>               
+                    <li data-filter=".filter-<%= category.name.replace(/\s/g, '') %>"><a caption="Interest In <%= category.name %>" id="Link_Filter_<%= category.name.replace(/\s/g, '') %>"><%= category.name %></a></li>
+              <% }); %>  
+              <!--
+              <li id="InterestDriveTrain" data-filter=".filter-drivetrain">Drive Train</li>
+              <li id="InterestEngineParts"data-filter=".filter-engineparts">Engine Parts</li>
+              <li id="InterestNewItems"data-filter=".filter-new">Filters</li>
+              <li id="InterestNewItems"data-filter=".filter-new">Hydraulics</li>
+              <li id="InterestNewItems"data-filter=".filter-new">Seals</li>
+              -->
             </ul>
           </div>
         </div>
@@ -259,7 +269,7 @@
               <div class="col-lg-4 col-md-6 portfolio-item filter-<%= product.categoryname.replace(/\s/g, '')%>">
               <div class="portfolio-wrap">
                
-                  <img src="<%=product.img%>" class="img-fluid" alt="" style="height:350px;">                
+                  <img src="<%=product.img%>" class="img-fluid" alt="" style="height:350px">                
               
                 <div class="portfolio-info">
                   <h4><%= product.name %></h4>
