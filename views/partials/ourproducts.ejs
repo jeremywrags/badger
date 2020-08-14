@@ -13,7 +13,7 @@
               <li data-filter="*" class="filter-active">All</li>
               <% categories.forEach(function(category) { %>                            
                     <li id="filterItem_<%= category.name.replace(/\s/g, '') %>" data-filter=".filter-<%= category.name.replace(/\s/g, '') %>">
-                      <a caption="Interest In <%= category.name %>" id="Link_Filter_<%= category.name.replace(/\s/g, '') %>" href="<%= pageURLref %>#products"><%= category.name %></a>
+                      <a caption="Interest In <%= category.name %>" id="Link_Filter_<%= category.name.replace(/\s/g, '') %>" ><%= category.name %></a>
                     </li>                    
               <% }); %>  
               <!--
