@@ -1,15 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<!-- CSS only -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+    <head>
+        <% include partials/head %> 
+      
+      </head>
+<body>
+<%= JSON.stringify(categories) %>
+<!-- ======= Header ======= -->
+<header id="header">
+    <div class="logo float-left" style="background-color: #ffffff; padding: 5px; position:relative; top: -10px;">    
+      <a href="/"><img src="/images/logos/Badger-Equipment-primary-logo-color.png" alt="" class="img-fluid"></a>
+    </div>
+    <div class="container">      
+      <nav class="nav-menu float-left d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+          <li><a caption="Interest In About Us" id="LinkAboutUs" href="#about">About Us</a></li>          
+          <li class="drop-down"><a caption="Interest in Products" id="LinkProducts" href="#products">Products</a>
+            <ul id="productMenu">
+            <% categories.forEach(function(category) { %>        
+                <% if(category.parent === ""){ %>
+                    <li class="drop-down" id="menuItem_<%= category.name.replace(/\s/g, '') %>" data-filter=".filter-<%= //category.name.replace(/\s/g, '') %>">
+                        <a caption="Interest In <%= category.name %>" id="Link_Menu_<%= category.name.replace(/\s/g, '') %>" href="<%= //pageURLref %>#products"><%= category.name %> </a>
+                        <ul id="menuItemList_<%= category.name.replace(/\s/g, '') %>">
+                        <% categories.forEach(function(child) { %> 
+                            <% if(child.parent === category.id){ %>
+                                <li id="menuItem_<%= child.name.replace(/\s/g, '') %>" data-filter=".filter-<%= //category.name.replace(/\s/g, '') %>">
+                                    <a caption="Interest In <%= child.name %>" id="Link_Menu_<%= child.name.replace(/\s/g, '') %>" href="<%= //pageURLref %>#products"><%= child.name %> </a>
+                                </li>
+                            <%}%>                    
+                        <%});%>  
+                </ul>
+              </li>                                    
+                <%} %>  
+            <% }); %>  
+            </ul>
+          </li>
+          <li><a caption="Interest In Services" id="LinkServices" href="#services">Services</a></li>          
+          <li><a caption="Interest In Our Team" id="LinkTeam" href="#team">Our Team</a></li>        
+          <li><a caption="Interest In Contact Us" id="Contact" href="#contact">Contact Us</a></li>
+        </ul>
+      </nav><!-- .nav-menu -->
+    </div>
+  </header><!-- End Header -->
 
-<!-- JS, Popper.js, and jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
-</head>
-<body> 
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="row mb-3">
         <div class="col-md-4 themed-grid-col"></div>
         <div class="col-md-4 themed-grid-col">
@@ -23,10 +69,7 @@
                 <label for="productCategory">Product Category</label>
                 <select class="custom-select mr-sm-2" name="productCategory" id="productCategory">
                     <option selected>Select a Category</option>
-                    <% categories.forEach(function(category) { %>                            
-                        <li id="InterestIn<%= category.name.replace(/\s/g, '') %>" data-filter=".filter-<%= category.name.replace(/\s/g, '') %>"><%= category.name %></li>
-                        <option value="<%= category.name %>"><%= category.name %></option>
-                  <% }); %>   
+                    
                 </select>
             </div>        
             <div class="form-group">
@@ -54,26 +97,26 @@
     
     
     
-    
-   
-  
-    <h1>Uplaoded Images</h1> 
-    <div> 
+    <div class="container">
         <% products.forEach(function(product) { %> 
-        <div> 
-            <div> 
-                <img style="width:200px;" src="data:image/<%=product.img.contentType%>;base64, <%=product.img.data.toString('base64')%>"> 
-                <div> 
-                    <h5><%= product.id %></h5> 
-                    <p><%= product.name %></p> 
-                    <h5><%= product.description %></h5> 
-                    <p><%= product.category %></p> 
-                    <h5><%= product.subcategory %></h5> 
-                    <p><%= product.price %></p> 
-                </div> 
-            </div> 
-        </div> 
+        <div class="row" style="border: solid 1px #000000;">
+          <div class="col-sm">
+            <img style="width:200px;" src="<%= product.img %>">          
+        </div>
+        
+        <div class="col-sm">
+            <p><span style="font-weight: bold; width:150px;">ID: </span><%= product.id %></p> 
+            <p><span style="font-weight: bold; width:150px;">Name: </span><%= product.name %></p> 
+            <p><span style="font-weight: bold; width:150px;">Long Desc: </span><%= product.longdescription %></p> 
+            <p><span style="font-weight: bold; width:150px;">Short Desc: </span><%= product.shortdescription %></p> 
+            <p><span style="font-weight: bold; width:150px;">Cat Name: </span><%= product.categoryname %></p> 
+            <p><span style="font-weight: bold; width:150px;">Parent Cat: </span><%= product.parentcategory %></p> 
+            <p><span style="font-weight: bold; width:150px;">Price List: </span><%= product.pricelistname %></p> 
+            <p><span style="font-weight: bold; width:150px;">Price: </span><%= product.price %></p> 
+          </div>          
+        </div>
         <% }) %> 
-    </div> 
+      </div>
+
 </body> 
 </html>
