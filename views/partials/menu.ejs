@@ -10,10 +10,21 @@
         <li><a caption="Interest In About Us" id="LinkAboutUs" href="#about">About Us</a></li>          
         <li class="drop-down"><a caption="Interest in Products" id="LinkProducts" href="#products">Products</a>
           <ul id="productMenu">
-          <% categories.forEach(function(category) { %>            
-            <li id="menuItem_<%= category.name.replace(/\s/g, '') %>" data-filter=".filter-<%= category.name.replace(/\s/g, '') %>">
-              <a caption="Interest In <%= category.name %>" id="Link_Menu_<%= category.name.replace(/\s/g, '') %>" href="<%= pageURLref %>#products"><%= category.name %> </a>
-            </li>  
+          <% categories.forEach(function(category) { %>        
+              <% if(category.parent === ""){ %>
+                  <li class="drop-down menuItem" id="menuItem_<%= category.name.replace(/\s/g, '') %>" data-filter=".filter-<%= category.name.replace(/\s/g, '') %>">
+                      <a class="menuItem" caption="Interest In <%= category.name %>" id="Link_Menu_<%= category.name.replace(/\s/g, '') %>" href="<%= pageURLref %>#products"><%= category.name %> </a>
+                      <ul id="menuItemList_<%= category.name.replace(/\s/g, '') %>">
+                      <% categories.forEach(function(child) { %> 
+                          <% if(child.parent === category.id){ %>
+                              <li class="menuItem" id="menuItem_<%= child.name.replace(/\s/g, '') %>" data-filter=".filter-<%= child.name.replace(/\s/g, '') %>">
+                                  <a caption="Interest In <%= child.name %>" id="Link_Menu_<%= child.name.replace(/\s/g, '') %>" href="<%= pageURLref %>#products"><%= child.name %> </a>
+                              </li>
+                          <%}%>                    
+                      <%});%>  
+              </ul>
+            </li>                                    
+              <%} %>  
           <% }); %>  
           </ul>
         </li>
@@ -24,7 +35,3 @@
     </nav><!-- .nav-menu -->
   </div>
 </header><!-- End Header -->
-<script type='text/javascript' src='https://c.la1-c2-ia4.salesforceliveagent.com/content/g/js/49.0/deployment.js'></script>
-<script type='text/javascript'>
-liveagent.init('https://d.la1-c2-ia4.salesforceliveagent.com/chat', '5724R000000DbSz', '00D4R0000006MwP');
-</script>

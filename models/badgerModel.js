@@ -25,7 +25,7 @@ module.exports.getChildCategories = function(parentID) {
   
 }
 
-module.exports.getCategories2 = function() {
+module.exports.getHierarchicalCategories = function() {
   return new Promise(function(resolve, reject) {
          db.query(`
          WITH RECURSIVE parents AS
@@ -71,8 +71,8 @@ module.exports.getCategories = function() {
           inner join salesforce.ccrz__E_PriceListItem__c pli on pli.ccrz__product__c = product.sfid
           inner join salesforce.ccrz__E_PriceList__c pl on pli.ccrz__pricelist__c = pl.sfid
           ) as res
-         where categoryname != 'All Products' and pricelistname = 'Badger Parts Retail Price';
-      `, function(err, data){
+         where categoryname != 'All Products';
+      `, function(err, data){ // and pricelistname = 'Badger Parts Retail Price'
         if (err) return reject(err);
           resolve(data.rows);
       })
@@ -100,7 +100,7 @@ module.exports.getProducts = function() {
           inner join salesforce.ccrz__E_PriceListItem__c pli on pli.ccrz__product__c = product.sfid
           inner join salesforce.ccrz__E_PriceList__c pl on pli.ccrz__pricelist__c = pl.sfid
           ) as res
-         where categoryname != 'All Products' and pricelistname = 'Badger Parts Retail Price';
+         where categoryname != 'All Products';
       `, function(err, data){ // and pricelistname = 'Badger Parts Retail Price'
         if (err) return reject(err);
           resolve(data.rows);

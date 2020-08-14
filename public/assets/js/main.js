@@ -10,9 +10,9 @@
   const actionMappingClicks = {};
   
   
-  //Get all links and push them into the action mapping object
+  //Get all links and push them into the action mapping object use this section to debug the auto link mapping in evergage
   //var linksToMap = Array.from(document.querySelectorAll('[id^="Link"]')).concat(Array.from(document.querySelectorAll('[id^="InterestIn"]')));  
-  var linksToMap = document.querySelectorAll('[caption]');
+  /*var linksToMap = document.querySelectorAll('[caption]');
   for(var i = 0; i < linksToMap.length; i++){
       if(linksToMap[i].getAttribute("caption")){
         actionMappingClicks[linksToMap[i].getAttribute("caption")] = "#" + linksToMap[i].id;          
@@ -22,6 +22,7 @@
       
         console.log(linksToMap[i].id + " : " + linksToMap[i].getAttribute("caption")) 
   }    
+  */
     // Toggle .header-scrolled class to #header when page is scrolled
   $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {
@@ -58,7 +59,7 @@
        
         $('html, body').animate({
           scrollTop: scrollto
-        }, 1500, 'easeInOutExpo');
+        }, 1000, 'easeInOutExpo');
 
         if ($(this).parents('.nav-menu, .mobile-nav').length) {
           $('.nav-menu .active, .mobile-nav .active').removeClass('active');
@@ -192,6 +193,7 @@
       itemSelector: '.portfolio-item',
       layoutMode: 'fitRows'
     });
+    
 
     $('#portfolio-flters li').on('click', function() {
       $("#portfolio-flters li").removeClass('filter-active');      
@@ -204,12 +206,14 @@
     });
 
     
-    $('#productMenu li').on('click', function() {
+    $('#productMenu li').on('click', function(e) {
+      e.stopPropagation();
+      //e.preventDefault();
       var link = this.id.split("_")[1];
       
       $("#portfolio-flters li").removeClass('filter-active');
-      $("#Link_Filter_" + link).parent().addClass('filter-active');
-
+      $("#Link_Filter_" + this.id.split("_")[1]).parent().addClass('filter-active');
+        console.log("data Filter: " + $(this).data('filter'))
       portfolioIsotope.isotope({
         filter: $(this).data('filter')
       });

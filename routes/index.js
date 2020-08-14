@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 badger.getProducts()
 .then(products =>{         
-      return badger.getCategories()
+      return badger.getHierarchicalCategories()
       .then( categories => {
         return [products, categories];
       });
@@ -33,7 +33,7 @@ router.get('/productDetail/:id', function(req, res){
      badger.getProduct(req.params.id)
 .then(product =>{
       var result = [];      
-      return badger.getCategories()
+      return badger.getCategories2()
       .then( categories => {
         return [product, categories];
       });
