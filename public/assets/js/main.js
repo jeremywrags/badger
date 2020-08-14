@@ -47,7 +47,7 @@
   var scrolltoOffset = $('#header').outerHeight() - 2;
   $(document).on('click', '.nav-menu a, .mobile-nav a, .scrollto', function(e) {
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-      var target = $(this.hash);
+      var target = $(this.hash);      
       if (target.length) {
         e.preventDefault();
 
@@ -194,6 +194,23 @@
       layoutMode: 'fitRows'
     });
     
+
+    $("#newsletterForm").submit(function(e){
+      e.preventDefault();
+      var values = {};
+      $.each($('#newsletterForm').serializeArray(), function(i, field) {
+        values[field.name] = field.value;
+      });
+
+      alert(values.email)
+      Evergage.sendEvent({
+        action: "Email Submit",
+        attributes: {
+            userId: values.email
+        }
+    });
+      
+    })
 
     $('#portfolio-flters li').on('click', function() {
       $("#portfolio-flters li").removeClass('filter-active');      
