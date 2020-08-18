@@ -85,7 +85,7 @@ module.exports.getProducts = function() {
          select * from ( 
           select 
           product.name as name, 
-          product.id as ID, 
+          product.sfid as ID,           
           pli.ccrz__price__c as Price, 
           pl.name as PriceListName,  
           product.ccrz__longdesc__c as LongDescription, 
@@ -114,7 +114,7 @@ module.exports.getProduct = function(productID) {
          select * from ( 
           select 
           product.name as name, 
-          product.id as ID, 
+          product.sfid as ID, 
           pli.ccrz__price__c as Price, 
           pl.name as PriceListName,  
           product.ccrz__longdesc__c as LongDescription, 
