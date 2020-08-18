@@ -18,7 +18,8 @@
         <div class="row no-gutters">
           <div class="col-lg-6 video-box">
             <img src="assets/img/BPS_Hero Default.png" class="img-fluid" alt="">
-            <img style="width:400px;" src="<%=product.img %>">             
+            <img style="width:400px;" src="<%=product.img %>">       
+            <input type="hidden" id="productID" value="<%=product.id %>"/>                  
           </div>
 
           <div class="col-lg-6 d-flex flex-column justify-content-center about-content">
@@ -27,10 +28,10 @@
               <div class="container">
                 <div class="row" style="padding:10px;">
                   <div class="col">
-                    <h2><%= product.name %></h2>                    
+                    <h2 id="productName"><%= product.name %></h2>                    
                   </div>
                   <div class="col">
-                    <h2>$<%= product.price %></h2>                    
+                    <h2 id="productPrice">$<%= product.price %></h2>                    
                   </div>
                   <div class="col" style="text-align: left;">
                     <button type="button" style="margin-bottom:10px;" class="btn btn-dark">Add to cart</button>
@@ -44,7 +45,7 @@
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><i class="bx bx-fingerprint"></i></div>
               <h4 class="title"><a href="">Product Desciprion</a></h4>
-              <p class="description">
+              <p class="description" id="productDescription">
                 <%= product.longdescription %>
               </p>
             </div>
