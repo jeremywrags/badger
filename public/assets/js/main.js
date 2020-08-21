@@ -76,6 +76,42 @@
     }
   });
 
+  $(document).ready(function() {
+
+    //Let's load the cart
+    var cart = loadCart();
+    
+    //Let's handle adding an item to the cart
+    $(document).on("click", "#btnAddToCart", function(){
+      //Let's convert the cost & qty
+      var cost = $("#productPrice").text();        
+      cost = parseFloat(cost.substring(1, cost.length-1));
+      var quantity = parseInt($("#productQuantity").val());
+
+      //Push the item into the current cart Items.
+      cart.items.push({
+        'itemID': $("#productID").val(),
+        'itemName': $("#productName").text(),
+        'itemPrice': cost,
+        'quantity' : quantity,
+        'category' : $("#productCategory").val(),
+        'img' : $("#productImage").attr("src")        
+      });
+      //Update the cart to account for the new items.
+      cart.cartItemCount = parseInt(cart.cartItemCount) + parseInt(quantity);
+      cart.cartTotal = (parseFloat(cart.cartTotal) + (quantity * cost)).toFixed(2);        
+      
+      //overwrite the current cart
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      //reload the cart to that we can update the site
+      cart = loadCart();
+    })
+  })
+
+  
+  
+
   // Activate smooth scroll on page load with hash links in the url
   $(document).ready(function() {
     if (window.location.hash) {
@@ -264,3 +300,36 @@
   });
 
 })(jQuery);
+
+function randomString(length, chars) {
+  var result = '';
+  for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+  return result;
+}
+
+function loadCart(){
+  //check local storage for a cart    
+  var loaclCart = localStorage.getItem("cart");
+  if(loaclCart){
+    //Cart Exists, lets convert it into an object
+    loaclCart = JSON.parse(loaclCart);         
+
+    //Lets log the cart to help debugging
+    console.log(loaclCart);
+  }
+  else
+  {
+    loaclCart = {
+      cartID : randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'),
+      items: [],
+      cartTotal : 0,
+      cartItemCount : 0
+    }
+    localStorage.setItem("cart", JSON.stringify(loaclCart));
+  }
+
+  //we need to update the cart indicators on the site
+  $("#cartItems_header").html(loaclCart.cartItemCount);
+  $("#cartTotal_header").html(loaclCart.cartTotal);  
+  return loaclCart;       
+}

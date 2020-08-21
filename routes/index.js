@@ -52,4 +52,18 @@ router.get('/products', function(req, res){
   })
 })
 
+router.get('/cart', function(req, res){
+  badger.getProduct(req.params.id)
+.then(product =>{
+      var result = [];      
+      return badger.getHierarchicalCategories()
+      .then( categories => {
+        return [product, categories];
+      });
+    })
+    .then(function(result){
+      res.render('cart', {page:'Shopping cart', pageURLref : '/',  categories: result[1]});     
+    })        
+})
+
 module.exports = router;

@@ -129,7 +129,7 @@ module.exports.getProduct = function(productID) {
           inner join salesforce.ccrz__E_PriceListItem__c pli on pli.ccrz__product__c = product.sfid
           inner join salesforce.ccrz__E_PriceList__c pl on pli.ccrz__pricelist__c = pl.sfid
           ) as res
-         where categoryname != 'All Products' and pricelistname = 'Badger Parts Retail Price' and id='${productID}';
+         where categoryname != 'All Products' and id='${productID}';
       `, function(err, data){
         if (err) return reject(err);
           resolve(data.rows);
