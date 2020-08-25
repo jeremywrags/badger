@@ -139,6 +139,15 @@ function submitTagForm() {
 }
 
 $(document).ready(function() {
+
+    $(document).on("change", ".envdd", function(){                
+        $(".envdd").val($(this).val())
+    })
+
+    $(document).on("blur", ".dsinput", function(){                    
+        $(".dsinput").val($(this).val())
+    })
+
     $("#ucp-form").submit(function() {
         if (!submitForm()) {
             return false;
