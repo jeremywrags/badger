@@ -90,7 +90,8 @@ module.exports.getProducts = function() {
           pl.name as PriceListName,  
           product.ccrz__longdesc__c as LongDescription, 
           product.ccrz__shortdescrt__c as ShortDescription, 
-          product.image_uri__c as img,  
+          product.image_uri__c as img, 
+          product.ccrz__SKU__c as sku,   
           cat.name as CategoryName, 
           parentCat.name as ParentCategory
           from salesforce.ccrz__E_ProductCategory__c pcat
@@ -120,6 +121,7 @@ module.exports.getProduct = function(productID) {
           product.ccrz__longdesc__c as LongDescription, 
           product.ccrz__shortdescrt__c as ShortDescription, 
           product.image_uri__c as img,  
+          product.ccrz__SKU__c as sku,  
           cat.name as CategoryName, 
           parentCat.name as ParentCategory
           from salesforce.ccrz__E_ProductCategory__c pcat
