@@ -16,7 +16,7 @@ function sendRequests(request, numRequests) {
 function sendRequest(request) {
 
     var egUrl = "";
-    if (request.action == "View Item" || request.action == "Purchase" || request.action == "View Tag" || request.action == "View Category") {
+    if (request.action == "View Item" || request.action == "Purchase" || request.action == "View Tag" || request.action == "View Category" || request.action == "Placed Bid") {
         egUrl = "https://mfg.evergage.com/twreceiver";
     } else if (request.action == "View Time") {
         egUrl = "https://mfg.evergage.com/pr";
