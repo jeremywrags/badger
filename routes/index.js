@@ -29,7 +29,7 @@ router.get('/dft', function(req, res, next) {
 })
 
 router.get('/productDetail/:id', function(req, res){
-  
+   
      badger.getProduct(req.params.id)
 .then(product =>{
       var result = [];      
